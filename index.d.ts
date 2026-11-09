@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2025 The Stdlib Authors.
@@ -16,21 +16,14 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var strided = require( '@stdlib/stats-strided-dnanmskmin' ).ndarray;
-
-
-// MAIN //
+import { float64ndarray, uint8ndarray } from '@stdlib/types/ndarray';
 
 /**
-* Computes the minimum value of a double-precision floating-point ndarray according to a mask, ignoring `NaN` values.
+* Computes the minimum value of a one-dimensional double-precision floating-point ndarray according to a mask, ignoring `NaN` values.
 *
 * ## Notes
 *
@@ -39,8 +32,8 @@ var strided = require( '@stdlib/stats-strided-dnanmskmin' ).ndarray;
 *     -   a one-dimensional input ndarray.
 *     -   a one-dimensional mask ndarray.
 *
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing ndarrays
-* @returns {number} minimum value
+* @param arrays - array-like object containing ndarrays
+* @returns minimum value
 *
 * @example
 * var Float64Vector = require( '@stdlib/ndarray-vector-float64' );
@@ -52,13 +45,9 @@ var strided = require( '@stdlib/stats-strided-dnanmskmin' ).ndarray;
 * var v = dnanmskmin( [ x, mask ] );
 * // returns -2.0
 */
-function dnanmskmin( arrays ) {
-	var mask = arrays[ 1 ];
-	var x = arrays[ 0 ];
-	return strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ), getData( mask ), getStride( mask, 0 ), getOffset( mask ) ); // eslint-disable-line max-len
-}
+declare function dnanmskmin( arrays: [ float64ndarray, uint8ndarray ] ): number;
 
 
 // EXPORTS //
 
-module.exports = dnanmskmin;
+export = dnanmskmin;
